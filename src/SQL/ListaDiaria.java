@@ -9,10 +9,13 @@ import java.sql.*;
 import javax.swing.*;
 
 public class ListaDiaria extends javax.swing.JFrame {
-
+String u;
+String p;
     
     public ListaDiaria() {
         initComponents();
+        u= JOptionPane.showInputDialog("Inserte usuario");
+        p= JOptionPane.showInputDialog("Inserte contraseña");
     }
 
     
@@ -129,8 +132,7 @@ public class ListaDiaria extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCargar1ActionPerformed
 
     private void btnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarActionPerformed
-        String u= "root";
-        String p= "muslon2022";
+        
         Conexion c=new Conexion();
         Object[][] datos = new String[0][0];
         c.AlumnosBBDD(u, p, 1, jTable1);
@@ -139,8 +141,6 @@ public class ListaDiaria extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Clase clase = new Clase();
         Conexion cx=new Conexion();
-        String u="root";
-        String p="muslon2022";
         String SQL = "SELECT * FROM Alumnos where Aula = 1";
         int alu=0;
         try {

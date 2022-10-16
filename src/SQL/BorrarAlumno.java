@@ -17,17 +17,15 @@ import javax.swing.JOptionPane;
  * @author didactarragolopez
  */
 public class BorrarAlumno extends javax.swing.JFrame {
-    
-    /**
-     * Creates new form BorrarAlumno
-     */
+String u;
+String p;
     public BorrarAlumno() {
         initComponents();
-        String usuario = "root";
-        String pass = "muslon2022";
+        u= JOptionPane.showInputDialog("Inserte usuario");
+        p= JOptionPane.showInputDialog("Inserte contraseña");
         Conexion con = new Conexion();
-        con.infoComboBox(usuario, pass, comboBoxAlumno, "Alumnos");
-        con.infoComboBox(usuario, pass, comboBoxAlumno2, "Alumnos");
+        con.infoComboBox(u, p, comboBoxAlumno, "Alumnos");
+        con.infoComboBox(u, p, comboBoxAlumno2, "Alumnos");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -284,22 +282,19 @@ public class BorrarAlumno extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
-        String usuario="root";
-        String pass="muslon2022";
+        
         
         Alumno alumno = (Alumno)comboBoxAlumno.getSelectedItem();
         Conexion con = new Conexion();
         String SQL = "DELETE FROM Alumnos WHERE Nombre= '"+alumno.getNombre()+"' AND Apellido= '"+alumno.getApellido()+"' AND Apellido2= '"+alumno.getApellido2()+"';";
         System.out.println(SQL);
-        con.sentenciaBBDD(usuario, pass, SQL);
+        con.sentenciaBBDD(u, p, SQL);
         JOptionPane.showMessageDialog(null, "El alumno se ha borrado de la base de datos.");
         
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         Conexion cone = new Conexion();
-        String u= "root";
-        String p="muslon2022";
         Alumno alumno = (Alumno)comboBoxAlumno2.getSelectedItem();
         String nombre= txtNombre.getText();
         String apellido = txtApellido.getText();
@@ -317,37 +312,28 @@ public class BorrarAlumno extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void comboBoxAlumno2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxAlumno2ActionPerformed
-        /*Alumno alumno = (Alumno)comboBoxAlumno.getSelectedItem();
-        
-        txtNombre.setText(alumno.getNombre());
-        txtApellido.setText(alumno.getApellido());
-        txtApellido2.setText(alumno.getApellido2());
-        txtDireccion.setText(alumno.getDireccion());
-        txtObservaciones.setText(alumno.getObservaciones());
-        txtEnfermedades.setText(alumno.getEnfermedades());        
-        */       
+            
     }//GEN-LAST:event_comboBoxAlumno2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        dispose();        // TODO add your handling code here:
+        dispose();        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-                // TODO add your handling code here:
+              
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDatosActionPerformed
         
         Alumno al = (Alumno)comboBoxAlumno2.getSelectedItem();
-        String usuario = "root";
-        String pass="muslon2022";
+        
         
         txtNombre.setText(al.getNombre());
         txtApellido.setText(al.getApellido());
         txtApellido2.setText(al.getApellido2());
         txtDireccion.setText(al.getDireccion());
         try {
-            Connection con = getConexion(usuario, pass);
+            Connection con = getConexion(u, p);
             Statement S = con.createStatement();
             ResultSet rs = S.executeQuery("SELECT *FROM ALumnos WHERE IdAlumno= "+ al.getIdAlumno());
             while (rs.next()){

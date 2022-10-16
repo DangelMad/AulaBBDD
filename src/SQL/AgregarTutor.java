@@ -19,14 +19,14 @@ import javax.swing.JOptionPane;
  * @author didactarragolopez
  */
 public class AgregarTutor extends javax.swing.JFrame {
-
-    
+String u;
+String p;
     public AgregarTutor() {
         initComponents();
-        String usuario = "root";
-        String pass = "muslon2022";
+        u= JOptionPane.showInputDialog("Inserte usuario");
+        p= JOptionPane.showInputDialog("Inserte contraseña");
         Conexion con = new Conexion();
-        con.infoComboBox(usuario, pass, comboBoxAlumno, "Alumnos");
+        con.infoComboBox(u, p, comboBoxAlumno, "Alumnos");
     }
 
     
@@ -193,12 +193,11 @@ public class AgregarTutor extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String S = "insert into Tutores(idTutor, Nombre, Apellido, Apellido2, Direccion,Email,Telefono) values(0,?,?,?,?,?,?)";
-        String u= "root";
-        String p="muslon2022";
+
         Conexion c=new Conexion();
         try{
             
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Aula", "root", "muslon2022");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Aula", u, p);
             PreparedStatement ps = con.prepareStatement(S); 
             ps.setString(1, txtNombreTutor.getText());
             ps.setString(2, txtApellidoTutor.getText());

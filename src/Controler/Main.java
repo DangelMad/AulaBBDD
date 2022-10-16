@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 public class Main {
     
     public static void main(String[] arg){
-        UserPassBBDD ventana1= new UserPassBBDD();
+        Menu ventana1= new Menu();
         ventana1.setVisible(true);
     }
 }

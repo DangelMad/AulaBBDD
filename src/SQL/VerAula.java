@@ -5,6 +5,7 @@
 package SQL;
 
 import Model.Conexion;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,11 +13,12 @@ import Model.Conexion;
  */
 public class VerAula extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VerAula
-     */
+    String u;
+    String p;
     public VerAula() {
         initComponents();
+        u= JOptionPane.showInputDialog("Inserte usuario");
+        p= JOptionPane.showInputDialog("Inserte contraseña");
     }
 
     /**
@@ -103,8 +105,7 @@ public class VerAula extends javax.swing.JFrame {
 
     private void btnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarActionPerformed
         Conexion con = new Conexion();
-        String u="root";
-        String p="muslon2022";
+        
         con.infoAlumnosAula(u, p, jComboBox1.getSelectedIndex(), txtAula);
     }//GEN-LAST:event_btnCargarActionPerformed
 

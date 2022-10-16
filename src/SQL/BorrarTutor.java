@@ -4,23 +4,21 @@
  */
 package SQL;
 import Model.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author didactarragolopez
  */
 public class BorrarTutor extends javax.swing.JFrame {
-
-    /**
-     * Creates new form BorrarTutor
-     */
+String u;
+String p;
     public BorrarTutor() {
         initComponents();
-        
-        String usuario = "root";
-        String pass = "muslon2022";
+        u= JOptionPane.showInputDialog("Inserte usuario");
+        p= JOptionPane.showInputDialog("Inserte contraseña");
         Conexion con = new Conexion();
-        con.infoTutorComboBox(usuario, pass, comboBoxTutor, "Tutores");
-        con.infoTutorComboBox(usuario, pass, comboBoxTutor2, "Tutores");
+        con.infoTutorComboBox(u, p, comboBoxTutor, "Tutores");
+        con.infoTutorComboBox(u, p, comboBoxTutor2, "Tutores");
         
     }
 
@@ -227,8 +225,6 @@ public class BorrarTutor extends javax.swing.JFrame {
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         
         Conexion cone = new Conexion();
-        String u= "root";
-        String p="muslon2022";
         Tutor tutor = (Tutor)comboBoxTutor2.getSelectedItem();
         String nombre= txtNombre.getText();
         String apellido = txtApellido.getText();

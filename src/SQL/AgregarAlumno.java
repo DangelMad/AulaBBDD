@@ -8,19 +8,18 @@ package SQL;
 import java.sql.SQLException;
 import java.sql.*;
 import java.sql.PreparedStatement;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 /**
  *
  * @author didactarragolopez
  */
 public class AgregarAlumno extends javax.swing.JFrame {
-    //private ModeloDatos modelo;
-    //private Connection con;
-    /**
-     * Creates new form AgregarAlumno
-     */
+    String u;
+    String p;
     public AgregarAlumno() {
         initComponents();
+        u= JOptionPane.showInputDialog("Inserte usuario");
+        p= JOptionPane.showInputDialog("Inserte contraseña");
     }
 
     /**
@@ -162,14 +161,11 @@ public class AgregarAlumno extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        /*String nombre = txtNombre.getText();
-        String apellido = txtApellido.getText();
-        String apellido2 = txtApellido2.getText();
-        String direccion = txtDireccion.getText();*/
+        
         String S = "insert into Alumnos(idAlumno, Nombre, Apellido, Apellido2, Direccion,AsistenciaTotal,AsistenciaMedia,AsistenciaNula, Aula) values(0,?,?,?,?,0,0,0,?)";
         try{
             
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Aula", "root", "muslon2022");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Aula", u, p);
             PreparedStatement ps = con.prepareStatement(S); 
             ps.setString(1, txtNombre.getText());
             ps.setString(2, txtApellido.getText());
